@@ -1,0 +1,23 @@
+<section class="admin_publications_wrapper">
+    <div class="admin_publication_block">
+        <a [routerLink]="['/admin']" class="admin_list_item">Повернутись до головної сторінки</a>
+    </div>
+    <div class="admin_publication_block">
+        <button type="button">Додати публікацію</button>
+    </div>
+    <div class="all_publications">
+        <p class="all_publications_title">Публікації:</p>
+        <div *ngFor="let publication of publications;" class="publication">
+            <a [routerLink]="['/admin']" class="publication_content">
+                <img [src]="publication.articleTitlePhoto" class="publication_photo">
+                <p class="publication_title">{{publication.articleTitle}}</p>
+            </a>
+            <div class="publication_actions">
+                <a [routerLink]="['/admin/edit/publications/', publication.id]" class="publication_edit" title="Редагувати" type="button">
+                    <img src="../../../assets/imgs/edit.png" alt="">
+                </a>
+                <button (click)="deletePublication(publication.id)" class="publication_delete" title="Видалити" type="button"></button>
+            </div>
+        </div> 
+    </div> 
+</section> 

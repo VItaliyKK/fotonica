@@ -1,0 +1,71 @@
+.admin_publication_block{
+    border-bottom: 1px solid var(--border-color);
+    button{
+        margin: 20px auto;
+        display: block;
+        background: transparent;
+        border: 1px solid var(--border-color);
+        padding: 5px 10px;
+        border-radius: var(--border-radius);
+    }
+    a{
+        margin: 20px auto;
+        display: block;
+        color: grey;
+    }
+}
+.all_publications{
+    .all_publications_title{
+        text-align: center;
+        margin: 20px;
+    }
+    .publication{
+        padding: 10px 15px;
+        border-radius: var(--border-radius);
+        border: 1px solid var(--border-color);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        .publication_content{
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            .publication_photo{
+                max-width: 100px;
+                max-height: 100px;
+                border-radius: var(--border-radius);
+                margin-right: 15px;
+                flex-shrink: 0;
+            }
+            p{
+                color: var(--main-text-color);
+            }
+        }
+        .publication_actions{
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+            .publication_edit, .publication_delete{
+                width: 30px;
+                height: 30px;
+                margin-left: 5px;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-color: transparent;
+                opacity: 0.5;
+                &:hover{
+                    opacity: 1;
+                }
+            }
+            .publication_edit{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .publication_delete{
+                background-image: url(../../../assets/imgs/delete.png);
+            }
+        }
+    }
+}

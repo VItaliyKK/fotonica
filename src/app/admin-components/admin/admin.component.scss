@@ -1,0 +1,21 @@
+.admin__wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .admin_list_item{
+        margin-top: 20px;
+        background-image: repeating-linear-gradient(45deg, #FF5722, #FFC107 33.4%);
+        width: 100%;
+        min-height: 50px;
+        text-align: center;
+        line-height: 50px;
+        font-size: 20px;
+        color: black;
+        font-weight: 600;
+        transition: all 0.2s linear;
+        &:hover{
+            color: #ffffff;
+            background-image: repeating-linear-gradient(45deg, #ff57227d, #ffc10782 33.4%);
+        }
+    }
+}
