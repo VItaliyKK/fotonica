@@ -1,0 +1,17 @@
+<a [routerLink]="['/admin/publications']" class="new_publication_back">Повернутись до публікацій</a>
+<p class="new_publication_title">New Publication</p>
+<div class="new_publication_set_title">
+    <label for="new_publication_set_title_input">Write publication name:</label>
+    <input id="new_publication_set_title_input" type="text" placeholder="Publication name...">
+</div>
+<ckeditor [(ngModel)]="htmlContent"></ckeditor>
+<div class="new_publication_add_multiple_photo">
+    <button >Add slide-show</button>
+</div>
+<div class="new_publication_public">
+    <button class="new_publication_send" (click)="newPublicationSend()">Опублікувати</button>
+</div>
+<div>
+    <p class="new_publication_preview">Попередній вигляд:</p>
+    <div [innerHTML]="htmlContent"></div>
+</div>

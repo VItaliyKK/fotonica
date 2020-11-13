@@ -2,7 +2,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    background-color: #ffffff8c;
+    background-color: ghostwhite;
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -40,6 +40,16 @@
                 color: white;
                 background-color: var(--main-color);
             }
+        }
+        .errorLogin{
+            color: red;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        .reset_password{
+            margin: 15px 0;
+            padding: 5px;
+            background-color: lightgrey;
         }
     }
 }

@@ -9,7 +9,7 @@ export class AdminPublicationsComponent implements OnInit {
   publications = [
     { id: 'g65hj1h6jghj616yj',
       date: new Date(),
-      articleTitlePhoto: 'https://scitechdaily.com/images/Photon-Electron-Illustration.jpg',
+      articleTitlePhoto: '',
       articleTitle: 'Next Era of Computing: What if We Could Teach Photons to Behave Like Electrons?'
     },
     { id: 'lhr6hb6jghj616yj',
@@ -26,5 +26,10 @@ export class AdminPublicationsComponent implements OnInit {
   deletePublication(id:string){
     console.log(id)
     // ** delete publication
+  }
+
+  changePublicationPhoto(id:string){
+    // ** change photo publication
+
   }
 }

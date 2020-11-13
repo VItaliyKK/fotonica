@@ -6,6 +6,7 @@ import { AdminPublicationsComponent } from './admin-components/admin-publication
 import { AdminTestsComponent } from './admin-components/admin-tests/admin-tests.component';
 import { AdminLoginComponent } from './admin-components/admin-login/admin-login.component';
 import { EditPublicationComponent } from './admin-components/edit-publication/edit-publication.component';
+import { NewPublicationComponent } from './admin-components/new-publication/new-publication.component';
 
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: 'admin/publications', component: AdminPublicationsComponent},
   {path: 'admin/tests', component: AdminTestsComponent},
   {path: 'admin/edit/publications/:id', component: EditPublicationComponent},
+  {path: 'admin/new/publication', component: NewPublicationComponent},
 ];
 
 @NgModule({

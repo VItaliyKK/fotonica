@@ -2,8 +2,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule} from '@angular/common/http';
+import { environment } from 'src/environments/environment.prod';
 
-// import { NgxTextEditorModule } from 'ngx-text-editor';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+
 import { CKEditorModule } from 'ckeditor4-angular';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -14,6 +19,7 @@ import { AdminTestsComponent } from './admin-components/admin-tests/admin-tests.
 import { AdminLoginComponent } from './admin-components/admin-login/admin-login.component';
 import { EditPublicationComponent } from './admin-components/edit-publication/edit-publication.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NewPublicationComponent } from './admin-components/new-publication/new-publication.component';
 
 @NgModule({
   declarations: [
@@ -22,16 +28,20 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AdminPublicationsComponent,
     AdminTestsComponent,
     AdminLoginComponent,
-    EditPublicationComponent
+    EditPublicationComponent,
+    NewPublicationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule, 
     FormsModule,
     HttpClientModule,
-    // NgxTextEditorModule,
     CKEditorModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule, // firestore
+    AngularFireAuthModule, // auth
+    AngularFireStorageModule // storage
   ],
   providers: [],
   bootstrap: [AppComponent]

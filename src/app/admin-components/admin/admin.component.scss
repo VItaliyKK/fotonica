@@ -4,8 +4,8 @@
     align-items: center;
     .admin_list_item{
         margin-top: 20px;
-        background-image: repeating-linear-gradient(45deg, #FF5722, #FFC107 33.4%);
-        width: 100%;
+        background-color: cadetblue;
+        width: 95%;
         min-height: 50px;
         text-align: center;
         line-height: 50px;
@@ -15,7 +15,8 @@
         transition: all 0.2s linear;
         &:hover{
             color: #ffffff;
-            background-image: repeating-linear-gradient(45deg, #ff57227d, #ffc10782 33.4%);
+            width: 100%;
+            background-image: repeating-linear-gradient(45deg, #ff562236, #ffc10733 33.4%);
         }
     }
 }

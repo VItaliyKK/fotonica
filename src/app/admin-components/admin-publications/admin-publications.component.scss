@@ -1,12 +1,10 @@
 .admin_publication_block{
     border-bottom: 1px solid var(--border-color);
-    button{
-        margin: 20px auto;
-        display: block;
-        background: transparent;
+    .new_publication{
         border: 1px solid var(--border-color);
         padding: 5px 10px;
         border-radius: var(--border-radius);
+        width: fit-content;
     }
     a{
         margin: 20px auto;
@@ -22,7 +20,7 @@
     .publication{
         padding: 10px 15px;
         border-radius: var(--border-radius);
-        border: 1px solid var(--border-color);
+        border-bottom: 1px solid var(--border-color);
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -38,15 +36,16 @@
                 margin-right: 15px;
                 flex-shrink: 0;
             }
-            p{
-                color: var(--main-text-color);
+            .publication_title{
+                color: black;
             }
         }
         .publication_actions{
             display: flex;
             align-items: center;
             flex-shrink: 0;
-            .publication_edit, .publication_delete{
+            .publication_edit, .publication_delete, .change_publication_photo{
+                position: relative;
                 width: 30px;
                 height: 30px;
                 margin-left: 5px;
@@ -56,6 +55,19 @@
                 opacity: 0.5;
                 &:hover{
                     opacity: 1;
+                    &::before{
+                        content: attr(title);
+                        position: absolute;
+                        bottom: 40px;
+                        left: 0;
+                        transform: translateX(-50%);
+                        background-color: #00000059;
+                        width: max-content;
+                        padding: 5px 10px;
+                        border-radius: 10px;
+                        box-shadow: 0 2px 7px 1px #00000082;
+                        color: white;
+                    }
                 }
             }
             .publication_edit{
@@ -66,6 +78,9 @@
             .publication_delete{
                 background-image: url(../../../assets/imgs/delete.png);
             }
+            .change_publication_photo{
+                background-image: url(../../../assets/imgs/change-photo.png);
+            }
         }
-    }
+    } 
 }

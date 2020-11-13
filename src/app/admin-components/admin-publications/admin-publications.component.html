@@ -3,19 +3,21 @@
         <a [routerLink]="['/admin']" class="admin_list_item">Повернутись до головної сторінки</a>
     </div>
     <div class="admin_publication_block">
-        <button type="button">Додати публікацію</button>
+        <a [routerLink]="['/admin/new/publication']" class="new_publication" type="button">Додати публікацію</a>
     </div>
     <div class="all_publications">
         <p class="all_publications_title">Публікації:</p>
+        <p *ngIf="publications.length == 0" class="all_publications_title">Немає публікацій</p>
         <div *ngFor="let publication of publications;" class="publication">
-            <a [routerLink]="['/admin']" class="publication_content">
-                <img [src]="publication.articleTitlePhoto" class="publication_photo">
-                <p class="publication_title">{{publication.articleTitle}}</p>
-            </a>
+            <div class="publication_content">
+                <img [src]="publication.articleTitlePhoto ? publication.articleTitlePhoto : '../../../assets/imgs/publication-default-photo.jpg'" class="publication_photo">
+                <a [routerLink]="['/admin']" class="publication_title">{{publication.articleTitle}}</a>
+            </div>
             <div class="publication_actions">
                 <a [routerLink]="['/admin/edit/publications/', publication.id]" class="publication_edit" title="Редагувати" type="button">
                     <img src="../../../assets/imgs/edit.png" alt="">
                 </a>
+                <button (click)="changePublicationPhoto(publication.id)" class="change_publication_photo" title="Змінити фото публікації"></button>
                 <button (click)="deletePublication(publication.id)" class="publication_delete" title="Видалити" type="button"></button>
             </div>
         </div> 
