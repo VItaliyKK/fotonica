@@ -1,0 +1,99 @@
+.edit_publication_title{
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid var(--border-color);
+    margin-top: 15px;
+    color: grey;
+    font-weight: bold;
+}
+.edit_publication_set_title, .select_edit_publication_photo{
+    border-top: 1px solid var(--border-color);
+    padding: 20px;
+    text-align: center;
+    color: grey;
+    label{
+        display: block;
+        margin-bottom: 10px;
+    }
+    input{
+        width: -webkit-fill-available;
+        background-color: white;
+        border: 1px solid var(--border-color);
+        padding: 10px 20px;
+    }
+    img{
+        max-width: 100px;
+        max-height: 100px;
+    }
+}
+#select_edit_publication_photo, #select_multiple_photos{
+    display: none;
+}
+.select_edit_publication_photo label, .edit_publication_add_multiple_photo label{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    border: 1px dashed var(--border-color);
+    border-radius: var(--border-radius);
+    &::after{
+        margin-top: 10px;
+        opacity: 0.5;
+    } 
+    &:hover{
+        background-color: #0000000a;
+        &::after{
+            opacity: 1;
+        }
+    }
+}
+.edit_publication_add_multiple_photo label{
+    &::after{
+        content: url(../../../../assets/imgs/slide-show.png);
+    }
+}
+.select_edit_publication_photo label{
+    &::after{
+        content: url(../../../../assets/imgs/publication-photo.png);
+    }
+}
+.selected_edit_publication_photos, .selected_edit_publication_logo{
+    position: relative;
+    width: fit-content;
+    margin-right: 10px;
+    display: inline;
+    img{
+        max-width: 100px;
+        max-height: 100px;
+    }
+    button{
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        width: 24px;
+        height: 24px;
+        background-image: url(../../../../assets/imgs/delete.png);
+    }
+}
+.edit_publication_back{
+    color: grey;
+}
+.edit_publication_add_multiple_photo{
+    color: grey;
+    border-bottom: 1px solid var(--border-color);
+    border-top: 1px solid var(--border-color);
+    padding: 20px
+}
+.edit_publication_preview{
+    text-align: center;
+    padding: 20px;
+    color: grey;
+}
+.update_publication_property{
+    padding: 10px;
+    display: block;
+    margin: 5px auto;
+    background-color: var(--admin-btn-col);
+    border-radius: var(--border-radius);
+    color: white;
+}

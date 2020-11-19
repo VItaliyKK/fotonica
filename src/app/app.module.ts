@@ -17,9 +17,10 @@ import { AdminComponent } from './admin-components/admin/admin.component';
 import { AdminPublicationsComponent } from './admin-components/admin-publications/admin-publications.component';
 import { AdminTestsComponent } from './admin-components/admin-tests/admin-tests.component';
 import { AdminLoginComponent } from './admin-components/admin-login/admin-login.component';
-import { EditPublicationComponent } from './admin-components/edit-publication/edit-publication.component';
+import { EditPublicationComponent } from './admin-components/admin-publications/edit-publication/edit-publication.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NewPublicationComponent } from './admin-components/new-publication/new-publication.component';
+import { NewPublicationComponent } from './admin-components/admin-publications/new-publication/new-publication.component';
+import { NotificationComponent } from './secondary-components/notification/notification.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { NewPublicationComponent } from './admin-components/new-publication/new-
     AdminTestsComponent,
     AdminLoginComponent,
     EditPublicationComponent,
-    NewPublicationComponent
+    NewPublicationComponent,
+    NotificationComponent
   ],
   imports: [
     BrowserModule,
@@ -39,9 +41,9 @@ import { NewPublicationComponent } from './admin-components/new-publication/new-
     CKEditorModule,
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestoreModule, // firestore
-    AngularFireAuthModule, // auth
-    AngularFireStorageModule // storage
+    AngularFirestoreModule,
+    AngularFireAuthModule, 
+    AngularFireStorageModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

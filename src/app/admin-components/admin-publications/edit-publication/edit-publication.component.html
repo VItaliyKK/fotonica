@@ -1,0 +1,38 @@
+<a [routerLink]="['/admin/publications']" class="edit_publication_back">Повернутись до публікацій</a>
+<p class="edit_publication_title">Edit Publication</p>
+
+<div class="edit_publication_set_title">
+    <label for="edit_publication_set_title_input">Change publication name:</label>
+    <input id="edit_publication_set_title_input" [(ngModel)]="publicationTitle" type="text" placeholder="Publication name...">
+</div>
+<button (click)="updateTitlePublication()" class="update_publication_property">Оновити назву публікації</button>
+
+<div *ngIf="!currentPublication?.titlePhoto" class="select_edit_publication_photo">
+    <label for="select_edit_publication_photo">Change publication photo:</label>
+    <input id="select_edit_publication_photo" (change)="updatePublicationLogo($event)" type="file" accept=".png,.jpeg,.jpg" >
+</div>
+<div *ngIf="currentPublication?.tempLogo" class="select_edit_publication_photo">
+    <div class="selected_edit_publication_logo">
+        <img [src]="currentPublication?.tempLogo ? currentPublication?.tempLogo : blobPublicationLogo" alt="">
+        <button (click)="deleteSelectedPublicationLogo()"></button>
+    </div>
+</div>
+
+<ckeditor [(ngModel)]="htmlContent"></ckeditor>
+<button (click)="updateContentPublication()" class="update_publication_property">Оновити текст публікації</button>
+
+<div class="edit_publication_add_multiple_photo">
+    <label for="select_multiple_photos">Change multiple photos for this publication:</label>
+    <input id="select_multiple_photos" (change)="addPublicationPhotos($event)" type="file" multiple accept=".png,.jpeg,.jpg">
+</div>
+<div *ngIf="currentPublication?.tempPhotos" class="edit_publication_add_multiple_photo">
+    <div *ngFor="let photoUrl of currentPublication?.tempPhotos; index as i;" class="selected_edit_publication_photos">
+        <img [src]="photoUrl" alt="">
+        <button (click)="deletePublicationPhoto(currentPublication.slidePhotos[i])"></button>
+    </div>
+</div>
+
+<div>
+    <p *ngIf="htmlContent" class="edit_publication_preview">Попередній вигляд:</p>
+    <div [innerHTML]="htmlContent"></div>
+</div>

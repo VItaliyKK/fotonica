@@ -4,4 +4,6 @@ export interface IPublication {
     title: string;
     titlePhoto?:string;
     slidePhotos?:string[];
+    tempLogo?: string;
+    tempPhotos?: string[];
 }

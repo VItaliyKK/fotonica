@@ -5,8 +5,8 @@ import { AdminComponent } from './admin-components/admin/admin.component';
 import { AdminPublicationsComponent } from './admin-components/admin-publications/admin-publications.component';
 import { AdminTestsComponent } from './admin-components/admin-tests/admin-tests.component';
 import { AdminLoginComponent } from './admin-components/admin-login/admin-login.component';
-import { EditPublicationComponent } from './admin-components/edit-publication/edit-publication.component';
-import { NewPublicationComponent } from './admin-components/new-publication/new-publication.component';
+import { NewPublicationComponent } from './admin-components/admin-publications/new-publication/new-publication.component';
+import { EditPublicationComponent } from './admin-components/admin-publications/edit-publication/edit-publication.component';
 
 
 const routes: Routes = [

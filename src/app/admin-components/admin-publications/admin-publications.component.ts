@@ -7,12 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminPublicationsComponent implements OnInit {
   publications = [
-    { id: 'g65hj1h6jghj616yj',
+    { id: 'syThXHCEB6CcVJzIs443',
       date: new Date(),
       articleTitlePhoto: '',
       articleTitle: 'Next Era of Computing: What if We Could Teach Photons to Behave Like Electrons?'
     },
-    { id: 'lhr6hb6jghj616yj',
+    { id: 'syThXHCEB6CcVJzIs443',
       date: new Date(),
       articleTitlePhoto: 'https://d3jkudlc7u70kh.cloudfront.net/interesting-facts-about-the-human-body.jpg',
       articleTitle: '90 Amazing Human Body Facts'

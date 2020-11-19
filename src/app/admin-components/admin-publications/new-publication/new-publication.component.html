@@ -1,0 +1,40 @@
+<a [routerLink]="['/admin/publications']" class="new_publication_back">Повернутись до публікацій</a>
+<p class="new_publication_title">New Publication</p>
+
+<div class="new_publication_set_title">
+    <label for="new_publication_set_title_input">Write publication name:</label>
+    <input id="new_publication_set_title_input" [(ngModel)]="currentPublication.title" type="text" placeholder="Publication name...">
+</div>
+
+<div *ngIf="!filePublicationLogo" class="select_new_publication_photo">
+    <label for="select_new_publication_photo">Select publication photo:</label>
+    <input id="select_new_publication_photo" (change)="setPublicationLogo($event)" type="file" accept=".png,.jpeg,.jpg" >
+</div>
+<div *ngIf="filePublicationLogo" class="select_new_publication_photo">
+    <div class="selected_new_publication_logo">
+        <img [src]="blobPublicationLogo" alt="">
+        <button (click)="deleteSelectedPublicationLogo()"></button>
+    </div>
+</div>
+
+<ckeditor [(ngModel)]="htmlContent"></ckeditor>
+
+<div *ngIf="blobPublicationPhotos.length == 0" class="new_publication_add_multiple_photo">
+    <label for="select_multiple_photos">Select multiple photos for this publication:</label>
+    <input id="select_multiple_photos" (change)="setPublicationPhotos($event)" type="file" multiple accept=".png,.jpeg,.jpg">
+</div>
+<div *ngIf="blobPublicationPhotos.length != 0" class="new_publication_add_multiple_photo">
+    <div *ngFor="let photo of blobPublicationPhotos; index as i;" class="selected_new_publication_photos">
+        <img [src]="photo" alt="">
+        <button (click)="deleteSelectedPublicationPhoto(filePublicationPhotos[i].name)"></button>
+    </div>
+</div>
+
+<div class="new_publication_public">
+    <button class="new_publication_send" (click)="addNewPublication()">Опублікувати</button>
+</div>
+
+<div>
+    <p *ngIf="htmlContent" class="new_publication_preview">Попередній вигляд:</p>
+    <div [innerHTML]="htmlContent"></div>
+</div>
