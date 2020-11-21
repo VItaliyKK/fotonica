@@ -23,7 +23,7 @@ export class NewPublicationComponent implements OnInit {
   ngOnInit(): void {
   };
 
-  ngOnDetroy(){
+  ngOnDestroy(){
     !this.messageListener || this.messageListener.unsubscribe()
   };
   

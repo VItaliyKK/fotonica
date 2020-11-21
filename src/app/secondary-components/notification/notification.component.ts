@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EditPublicationService } from 'src/app/shared/services/admin/publication/edit-publication.service';
 import { NewPublicationService } from 'src/app/shared/services/admin/publication/new-publication.service';
+import { MainService } from 'src/app/shared/services/main.service';
 
 @Component({
   selector: 'app-notification',
@@ -33,18 +34,15 @@ export class NotificationComponent implements OnInit {
   message:string = ''
   isHide:boolean = true
 
-  constructor(private newPublicationService: NewPublicationService, private editPublicationService: EditPublicationService) { }
+  constructor(private mainService: MainService) { }
 
   ngOnInit(): void {
-    this.newPublicationService.addedNewPublication.subscribe( data => {
-      this.processData(data)
-    })
-    this.editPublicationService.updatePublicationData.subscribe( data => {
-      this.processData(data)
+    this.mainService.changePublication.subscribe( data => {
+      this.showEvent(data)
     })
   };
 
-  processData(text){
+  showEvent(text){
     this.message = text
     this.isHide = false
     setTimeout( () => {

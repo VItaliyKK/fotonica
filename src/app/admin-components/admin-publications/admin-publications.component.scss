@@ -1,10 +1,11 @@
 .admin_publication_block{
     border-bottom: 1px solid var(--border-color);
     .new_publication{
-        border: 1px solid var(--border-color);
         padding: 10px 20px;
         border-radius: var(--border-radius);
         width: fit-content;
+        background-color: var(--admin-btn-col);
+        color: white;
     }
     a{
         margin: 20px auto;
@@ -25,6 +26,7 @@
         align-items: center;
         justify-content: space-between;
         margin-bottom: 10px;
+        background-color: white;
         .publication_content{
             display: flex;
             align-items: center;
@@ -44,7 +46,7 @@
             display: flex;
             align-items: center;
             flex-shrink: 0;
-            .publication_edit, .publication_delete, .change_publication_photo{
+            .publication_edit, .publication_delete{
                 position: relative;
                 width: 30px;
                 height: 30px;
@@ -77,9 +79,6 @@
             }
             .publication_delete{
                 background-image: url(../../../assets/imgs/delete.png);
-            }
-            .change_publication_photo{
-                background-image: url(../../../assets/imgs/change-photo.png);
             }
         }
     } 

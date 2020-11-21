@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { IPublication } from 'src/app/shared/interfaces/publication.interface';
 import { EditPublicationService } from 'src/app/shared/services/admin/publication/edit-publication.service';
+import { MainService } from 'src/app/shared/services/main.service';
 
 @Component({
   selector: 'app-edit-publication',
@@ -17,6 +18,7 @@ export class EditPublicationComponent implements OnInit {
   subscribers: Subscription[] = []
   
   constructor(private router: Router, 
+              private mainService:MainService,
               private editPublicationSevice: EditPublicationService) { }
 
   ngOnInit(): void {
@@ -33,10 +35,9 @@ export class EditPublicationComponent implements OnInit {
     this.editPublicationSevice.getPublication(this.currentPublication.id)
   }
 
-  ngOnDetroy(){
-    this.subscribers.forEach( subscriber => {
-      !subscriber || subscriber.unsubscribe()
-    })
+  ngOnDestroy(){
+    this.subscribers.forEach( subscriber => !subscriber || subscriber.unsubscribe())
+    this.editPublicationSevice.publicationSnapshotChanges.remove(this.editPublicationSevice.publicationSnapshotChanges)
   };
   // ***
   addPublicationPhotos(e: Event){
@@ -56,7 +57,7 @@ export class EditPublicationComponent implements OnInit {
   deleteSelectedPublicationLogo(){
     if (this.currentPublication.titlePhoto) {
       this.editPublicationSevice.deleteLogoPublication(this.currentPublication.id, this.currentPublication.titlePhoto).then( () => {
-        this.editPublicationSevice.updatePublicationData.next('Основне фото публікації видалено!')
+        this.mainService.notifyEvent('Основне фото публікації видалено!')
       })
     }
   };

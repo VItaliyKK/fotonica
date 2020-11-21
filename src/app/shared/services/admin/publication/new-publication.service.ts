@@ -3,19 +3,19 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { Subject } from 'rxjs';
 import { IPublication } from '../../../interfaces/publication.interface';
+import { MainService } from '../../main.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NewPublicationService {
-  addedNewPublication: Subject<string> = new Subject<string>()
   getPublicationData: Subject<IPublication> = new Subject<IPublication>()
   getPublicationContentData: Subject<string> = new Subject<string>() 
   // getPublicationPhotosData: Subject<Array<string>> = new Subject<Array<string>>()
   currentPublication:IPublication
   currentPublicationContent:string
 
-  constructor(private firestore: AngularFirestore, private storage: AngularFireStorage) { }
+  constructor(private firestore: AngularFirestore, private storage: AngularFireStorage, private mainService:MainService) { }
 
   getDownloadUrlPhoto(filePath: string): Promise<any> {
     return this.storage.ref(filePath).getDownloadURL().toPromise()
@@ -62,7 +62,7 @@ export class NewPublicationService {
       })
       this.addNewPublicationToDatabase(this.currentPublication).then( () => {
         this.addNewPublicationContentToDatabase(this.currentPublicationContent).then( () => {
-          this.addedNewPublication.next('Публікація додана!')
+          this.mainService.notifyEvent('Публікація додана!')
         })
       })
     })
@@ -82,7 +82,7 @@ export class NewPublicationService {
         } else {
           this.addNewPublicationToDatabase(this.currentPublication).then( () => {
             this.addNewPublicationContentToDatabase(this.currentPublicationContent).then( () => {
-              this.addedNewPublication.next('Публікація додана!')
+              this.mainService.notifyEvent('Публікація додана!')
             })
           })
         }
@@ -93,7 +93,7 @@ export class NewPublicationService {
       } else {
         this.addNewPublicationToDatabase(this.currentPublication).then( () => {
           this.addNewPublicationContentToDatabase(this.currentPublicationContent).then( () => {
-            this.addedNewPublication.next('Публікація додана!')
+            this.mainService.notifyEvent('Публікація додана!')
           })
         })
       }

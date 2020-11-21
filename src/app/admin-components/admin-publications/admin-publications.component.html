@@ -10,15 +10,14 @@
         <p *ngIf="publications.length == 0" class="all_publications_title">Немає публікацій</p>
         <div *ngFor="let publication of publications;" class="publication">
             <div class="publication_content">
-                <img [src]="publication.articleTitlePhoto ? publication.articleTitlePhoto : '../../../assets/imgs/publication-default-photo.jpg'" class="publication_photo">
-                <a [routerLink]="['/admin']" class="publication_title">{{publication.articleTitle}}</a>
+                <img [src]="publication?.tempTitlePhoto ? publication?.articleTitlePhoto : '../../../assets/imgs/publication-default-photo.jpg'" class="publication_photo">
+                <a [routerLink]="['/admin']" class="publication_title">{{publication.title}}</a>
             </div>
             <div class="publication_actions">
                 <a [routerLink]="['/admin/edit/publications/', publication.id]" class="publication_edit" title="Редагувати" type="button">
                     <img src="../../../assets/imgs/edit.png" alt="">
                 </a>
-                <button (click)="changePublicationPhoto(publication.id)" class="change_publication_photo" title="Змінити фото публікації"></button>
-                <button (click)="deletePublication(publication.id)" class="publication_delete" title="Видалити" type="button"></button>
+                <button (click)="deletePublication(publication)" class="publication_delete" title="Видалити" type="button"></button>
             </div>
         </div> 
     </div> 

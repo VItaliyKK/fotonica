@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireStorage } from '@angular/fire/storage';
-import { Subject } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
 import { IPublication } from 'src/app/shared/interfaces/publication.interface';
 import * as firebase from 'firebase/app';
+import { MainService } from '../../main.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,33 +12,37 @@ import * as firebase from 'firebase/app';
 export class EditPublicationService {
   getPublicationData: Subject<IPublication> = new Subject<IPublication>()
   getPublicationContentData: Subject<string> = new Subject<string>() 
-  updatePublicationData: Subject<string> = new Subject<string>()
   currentPublication:IPublication
+  publicationSnapshotChanges: Subscription
 
-  constructor(private firestore: AngularFirestore, private storage: AngularFireStorage) { }
+  constructor(private firestore: AngularFirestore, private storage: AngularFireStorage, private mainService:MainService) { }
   // ***
   getPublication(id:string): void{
-    this.firestore.collection('publications').doc(id).snapshotChanges().subscribe( doc => {
+    this.publicationSnapshotChanges = this.firestore.collection('publications').doc(id).snapshotChanges().subscribe( doc => {
       console.log('GetIPublication•');
       this.currentPublication = doc.payload.data() as IPublication
-      if (this.currentPublication.titlePhoto) {
-        this.storage.ref(`publications/logo/${this.currentPublication.titlePhoto}`).getDownloadURL().toPromise().then( url => {
-          this.currentPublication.tempLogo = url
-        })
-      }
-      if (this.currentPublication.slidePhotos.length > 0) {
-        let photosUrlPromises = this.currentPublication.slidePhotos.map( photo => {
-          return this.storage.ref(`publications/photos/${photo}`).getDownloadURL().toPromise()
-        })
-        Promise.all(photosUrlPromises).then( promises => {
-          this.currentPublication.tempPhotos = []
-          promises.forEach( photoUrl => {
-            this.currentPublication.tempPhotos.push(photoUrl)
+      if (this.currentPublication) {
+        if (this.currentPublication.titlePhoto) {
+          this.storage.ref(`publications/logo/${this.currentPublication.titlePhoto}`).getDownloadURL().toPromise().then( url => {
+            this.currentPublication.tempLogo = url
           })
+        }
+        if (this.currentPublication.slidePhotos.length > 0) {
+          let photosUrlPromises = this.currentPublication.slidePhotos.map( photo => {
+            return this.storage.ref(`publications/photos/${photo}`).getDownloadURL().toPromise()
+          })
+          Promise.all(photosUrlPromises).then( promises => {
+            this.currentPublication.tempPhotos = []
+            promises.forEach( photoUrl => {
+              this.currentPublication.tempPhotos.push(photoUrl)
+            })
+            this.getPublicationData.next(this.currentPublication)
+          })
+        } else {
           this.getPublicationData.next(this.currentPublication)
-        })
+        }
       } else {
-        this.getPublicationData.next(this.currentPublication)
+        this.mainService.notifyEvent('Помилка завантаження!')
       }
     })
     this.firestore.collection('publications-content').doc(id).get().toPromise().then( content => {
@@ -58,14 +63,21 @@ export class EditPublicationService {
       this.storage.upload(filePath, logo).then( res => {
         this.currentPublication.titlePhoto = res.metadata.name
         this.cleanUpdatePublication(this.currentPublication).then( () => {
-          this.updatePublicationData.next('Основне фото публікації оновлено!')
+          this.mainService.notifyEvent('Основне фото публікації оновлено!')
         })
       })
     }
   };
-
+  // ***
   private cleanUpdatePublication(publication: IPublication): Promise<void>{
-    return this.firestore.collection('publications').doc(publication.id).update(publication)
+    let tempPublication = {
+      id: publication.id,
+      date: new Date(),
+      title: publication.title,
+      titlePhoto: publication.titlePhoto,
+      slidePhotos: publication.slidePhotos
+    }
+    return this.firestore.collection('publications').doc(publication.id).update(tempPublication)
   }
   // ***
   deleteLogoPublication(id: string, name: string): Promise<any>{ 
@@ -82,7 +94,7 @@ export class EditPublicationService {
       'slidePhotos': firebase.default.firestore.FieldValue.arrayRemove(name)
     }).then( () => {
       this.storage.ref('publications/photos/' + name).delete().subscribe( () => {
-        this.updatePublicationData.next('Медіафайл із публікації видалено!')
+        this.mainService.notifyEvent('Медіафайл із публікації видалено!')
       })
     })
   };
@@ -91,9 +103,9 @@ export class EditPublicationService {
     this.firestore.collection('publications').doc(iD).update({
       'title': newPublicationTitle
     }).then( () => {
-      this.updatePublicationData.next('Назву публікації змінено!')
+      this.mainService.notifyEvent('Назву публікації змінено!')
     }).catch( err => {
-      this.updatePublicationData.next(err.message)
+      this.mainService.notifyEvent(err.message)
     })
   };
   // ***
@@ -101,9 +113,9 @@ export class EditPublicationService {
     this.firestore.collection('publications-content').doc(iD).update({
       'content': text
     }).then( () => {
-      this.updatePublicationData.next('Текст публікації змінено!')
+      this.mainService.notifyEvent('Текст публікації змінено!')
     }).catch( err => {
-      this.updatePublicationData.next(err.message)
+      this.mainService.notifyEvent(err.message)
     })
   };
   // ***
@@ -121,7 +133,7 @@ export class EditPublicationService {
         })
       })
       Promise.all(pushedNamesPhoto).then( () => {
-        this.updatePublicationData.next('Додано нові медіафайли до публікації!')
+        this.mainService.notifyEvent('Додано нові медіафайли до публікації!')
       })
     })
   };

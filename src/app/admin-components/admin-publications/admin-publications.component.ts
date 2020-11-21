@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { IPublication } from 'src/app/shared/interfaces/publication.interface';
+import { PublicationService } from 'src/app/shared/services/admin/publication/publication.service';
 
 @Component({
   selector: 'app-admin-publications',
@@ -6,30 +8,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-publications.component.scss']
 })
 export class AdminPublicationsComponent implements OnInit {
-  publications = [
-    { id: 'syThXHCEB6CcVJzIs443',
-      date: new Date(),
-      articleTitlePhoto: '',
-      articleTitle: 'Next Era of Computing: What if We Could Teach Photons to Behave Like Electrons?'
-    },
-    { id: 'syThXHCEB6CcVJzIs443',
-      date: new Date(),
-      articleTitlePhoto: 'https://d3jkudlc7u70kh.cloudfront.net/interesting-facts-about-the-human-body.jpg',
-      articleTitle: '90 Amazing Human Body Facts'
-    }
-  ]
-  constructor() { }
+  publications:IPublication[] = []
+
+  constructor(private publicationService: PublicationService) { }
 
   ngOnInit(): void {
+    this.publicationService.getPublicationsList.subscribe( list => {
+      this.publications = list
+    })
+    this.publicationService.getPublications()
   }
 
-  deletePublication(id:string){
-    console.log(id)
-    // ** delete publication
+  ngOnDestroy(){
+    this.publications = [] 
+    this.publicationService.getPublicationsList.observers = []
   }
 
-  changePublicationPhoto(id:string){
-    // ** change photo publication
-
+  deletePublication(publication:IPublication){
+    console.log(publication.id)
+    this.publicationService.deletePublication(publication)
   }
 }
