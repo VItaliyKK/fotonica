@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 
 import { AdminComponent } from './admin-components/admin/admin.component';
 import { AdminPublicationsComponent } from './admin-components/admin-publications/admin-publications.component';
@@ -9,13 +9,19 @@ import { NewPublicationComponent } from './admin-components/admin-publications/n
 import { EditPublicationComponent } from './admin-components/admin-publications/edit-publication/edit-publication.component';
 
 
-const routes: Routes = [
-  {path: 'login', component: AdminLoginComponent},
-  {path: 'admin', component: AdminComponent},
-  {path: 'admin/publications', component: AdminPublicationsComponent},
-  {path: 'admin/tests', component: AdminTestsComponent},
-  {path: 'admin/edit/publications/:id', component: EditPublicationComponent},
-  {path: 'admin/new/publication', component: NewPublicationComponent},
+const routes: Routes = [{
+    path: 'login', 
+    component: AdminLoginComponent
+  },{
+    path: 'admin', 
+    component: AdminComponent
+  },{
+    path: 'admin/publications', 
+    loadChildren: () => import('./modules/admin-publication/admin-publication.module').then(m => m.AdminPublicationModule) 
+  },{
+    path: 'admin/tests', 
+    component: AdminTestsComponent
+  }
 ];
 
 @NgModule({

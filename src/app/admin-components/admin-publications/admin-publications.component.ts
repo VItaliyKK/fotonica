@@ -15,6 +15,8 @@ export class AdminPublicationsComponent implements OnInit {
   ngOnInit(): void {
     this.publicationService.getPublicationsList.subscribe( list => {
       this.publications = list
+      console.log(this.publications);
+      
     })
     this.publicationService.getPublications()
   }

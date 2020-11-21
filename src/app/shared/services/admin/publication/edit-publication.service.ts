@@ -19,9 +19,9 @@ export class EditPublicationService {
   // ***
   getPublication(id:string): void{
     this.publicationSnapshotChanges = this.firestore.collection('publications').doc(id).snapshotChanges().subscribe( doc => {
-      console.log('GetIPublication•');
-      this.currentPublication = doc.payload.data() as IPublication
-      if (this.currentPublication) {
+      console.log('GetIPublication•', doc.payload.exists);
+      if (doc.payload.exists) {
+        this.currentPublication = doc.payload.data() as IPublication
         if (this.currentPublication.titlePhoto) {
           this.storage.ref(`publications/logo/${this.currentPublication.titlePhoto}`).getDownloadURL().toPromise().then( url => {
             this.currentPublication.tempLogo = url
@@ -46,7 +46,12 @@ export class EditPublicationService {
       }
     })
     this.firestore.collection('publications-content').doc(id).get().toPromise().then( content => {
-      this.getPublicationContentData.next(content.data().content)
+      console.log('publications-content',content.exists);
+      if (content.exists) {
+        this.getPublicationContentData.next(content.data().content)
+      } else{
+        this.mainService.notifyEvent('Помилка завантаження!')
+      }
     })
   };
   // ***
