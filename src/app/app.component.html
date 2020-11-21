@@ -3,11 +3,18 @@
       <h1>WebsiteName</h1>
     </div>
     <nav class="header_navigation">
-      <a [routerLink]="['/admin']" class="admin_list_item">Page 1</a>
-      <a [routerLink]="['/admin']" class="admin_list_item">Page 2</a>
-      <a [routerLink]="['/admin']" class="admin_list_item">Page 3</a>
-      <a [routerLink]="['/admin']" class="admin_list_item">Page 4</a>
-      <a [routerLink]="['/admin']" class="admin_list_item">Page 5</a>
+      <div class="header_navigation_width">
+        <div class="header_navigation_list">
+          <a [routerLink]="['/publications']" routerLinkActive="active" class="admin_list_item">Публікації</a>
+          <a [routerLink]="['/admin']" routerLinkActive="active" class="admin_list_item">Page 2</a>
+          <a [routerLink]="['/admin']" routerLinkActive="active" class="admin_list_item">Page 3</a>
+          <a [routerLink]="['/admin']" routerLinkActive="active" class="admin_list_item">Page 4</a>
+          <a [routerLink]="['/admin']" routerLinkActive="active" class="admin_list_item">Page 5</a>
+        </div>
+        <div class="search_wrapper">
+          <app-search></app-search>
+        </div>
+      </div>
     </nav>
 </header>
 <main class="main_wrapper">

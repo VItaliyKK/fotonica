@@ -1,0 +1,9 @@
+<div class="search_box">
+    <input [ngClass]="{'filled': searchInput}" [(ngModel)]="searchInput" (input)="search()" name="searchInput" type="text" placeholder="Пошук ...">
+
+    <section *ngIf="searchInput" class="search_result_wrapper">
+        <h2>Результат пошуку:</h2>
+        <div class="search_element">search_element</div>
+        <div class="search_element">search_element</div>
+    </section>
+</div>

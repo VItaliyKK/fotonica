@@ -1,0 +1,16 @@
+.publications_wrapper{
+    width: 100%;
+    .publications_list_title{
+        text-align: center;
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: var(--main-padding);
+        color: var(--main-text-color);
+    }
+    .publications_list{
+        display: flex;
+        flex-wrap: wrap;
+        .publication{
+            width: 50%;
+        }
+    }
+}

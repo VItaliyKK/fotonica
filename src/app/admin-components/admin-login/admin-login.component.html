@@ -3,7 +3,7 @@
         <input class="form_element" type="email" [(ngModel)]="emailValue" name="emailValue" required placeholder="Email">
         <input class="form_element" type="password" [(ngModel)]="passwordValue" name="passwordValue" required placeholder="Password">
         <p class="errorLogin">{{errorLogin}}</p>
-        <button *ngIf="isResetPassword" (click)="resetPassword()" class="reset_password" type="button">Forgot password?</button>
         <button class="login_submit" type="submit">LogIn</button>
+        <button *ngIf="isResetPassword" (click)="resetPassword()" class="reset_password" type="button">Forgot password?</button>
     </form>
 </section> 

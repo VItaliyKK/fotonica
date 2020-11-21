@@ -18,6 +18,8 @@ import { NotificationComponent } from './secondary-components/notification/notif
 import { AdminPublicationModule } from './modules/admin-publication/admin-publication.module';
 import { RouterModule } from '@angular/router';
 import { AdminComponent } from './admin-components/admin/admin.component';
+import { SearchComponent } from './secondary-components/search/search.component';
+import { PublicationsComponent } from './main-conponents/publications/publications.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { AdminComponent } from './admin-components/admin/admin.component';
     AdminComponent,
     AdminTestsComponent,
     AdminLoginComponent,
-    NotificationComponent
+    NotificationComponent,
+    SearchComponent,
+    PublicationsComponent
   ],
   imports: [
     BrowserModule,
