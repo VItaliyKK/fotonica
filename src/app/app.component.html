@@ -1,23 +1,7 @@
-<header class="header_wrapper">
-    <div class="header_logo_wrapper">
-      <h1>WebsiteName</h1>
-    </div>
-    <nav class="header_navigation">
-      <div class="header_navigation_width">
-        <div class="header_navigation_list">
-          <a [routerLink]="['/publications']" routerLinkActive="active" class="admin_list_item">Публікації</a>
-          <a [routerLink]="['/admin']" routerLinkActive="active" class="admin_list_item">Page 2</a>
-          <a [routerLink]="['/admin']" routerLinkActive="active" class="admin_list_item">Page 3</a>
-          <a [routerLink]="['/admin']" routerLinkActive="active" class="admin_list_item">Page 4</a>
-          <a [routerLink]="['/admin']" routerLinkActive="active" class="admin_list_item">Page 5</a>
-        </div>
-        <div class="search_wrapper">
-          <app-search></app-search>
-        </div>
-      </div>
-    </nav>
-</header>
+<app-header></app-header>
+
 <main class="main_wrapper">
   <router-outlet></router-outlet>
 </main>
+
 <app-notification></app-notification>

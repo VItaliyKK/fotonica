@@ -19,7 +19,9 @@ import { AdminPublicationModule } from './modules/admin-publication/admin-public
 import { RouterModule } from '@angular/router';
 import { AdminComponent } from './admin-components/admin/admin.component';
 import { SearchComponent } from './secondary-components/search/search.component';
-import { PublicationsComponent } from './main-conponents/publications/publications.component';
+import { HeaderComponent } from './secondary-components/header/header.component';
+import { PublicationsComponent } from './main-components/publications/publications.component';
+import { PublicationModule } from './modules/publication/publication.module';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,10 @@ import { PublicationsComponent } from './main-conponents/publications/publicatio
     AdminLoginComponent,
     NotificationComponent,
     SearchComponent,
-    PublicationsComponent
+    HeaderComponent,
+    PublicationsComponent,
+    // ViewPublicationComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -40,6 +45,7 @@ import { PublicationsComponent } from './main-conponents/publications/publicatio
     BrowserAnimationsModule,
 
     AdminPublicationModule,
+    PublicationModule,
     
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,

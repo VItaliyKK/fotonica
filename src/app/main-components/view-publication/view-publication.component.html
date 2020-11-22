@@ -1,0 +1,13 @@
+<div class="view_publication_wrapper">
+    <div class="view_publication_box" [ngStyle]="{'background-image': 'url(' + currentPublication?.tempLogo + ')'}"></div>
+    <div class="view_publication_header">
+        <h1>{{currentPublication?.title}}</h1>
+    </div>
+    <div class="view_publication_content" [innerHTML]="currentPublicationContent"></div>
+    <div *ngIf="carouselIsExist" class="view_publication_carousel">
+        <app-carousel [photosList]="currentPublication?.tempPhotos"></app-carousel>
+    </div>
+    <div class="view_publication_date">
+        <time>{{currentPublicationDate?.seconds * 1000 | date:'HH:mm, MMM d, y'}}</time>
+    </div>
+</div>
