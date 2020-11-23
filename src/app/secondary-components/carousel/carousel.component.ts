@@ -7,12 +7,21 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class CarouselComponent implements OnInit {
   @Input() photosList: string[];
+  imageObject: Array<object> = [];
 
-  constructor() { }
+  constructor() { } 
 
   ngOnInit(): void {
   }
 
-  
-
+  ngOnChanges(){
+    this.imageObject = this.photosList.map( (url, i) => {
+      return {
+        image: url,
+        thumbImage: url,
+        alt: i+1,
+        title: i+1
+      }
+    })
+  };
 }

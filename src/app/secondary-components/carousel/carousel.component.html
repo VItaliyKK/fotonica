@@ -9,4 +9,7 @@
     </div>
   </ng-template>
 </ngb-carousel> -->
-fdfs
+
+<div *ngIf="imageObject.length > 0">
+  <ng-image-slider [images]="imageObject" [imageSize]="{width: 300, height: 300, space: 4}"></ng-image-slider> 
+</div>

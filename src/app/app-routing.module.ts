@@ -5,7 +5,6 @@ import { AdminComponent } from './admin-components/admin/admin.component';
 import { AdminTestsComponent } from './admin-components/admin-tests/admin-tests.component';
 import { AdminLoginComponent } from './admin-components/admin-login/admin-login.component';
 import { PublicationsComponent } from './main-components/publications/publications.component';
-import { ViewPublicationComponent } from './main-components/view-publication/view-publication.component';
 
 
 const routes: Routes = [{

@@ -6,18 +6,21 @@ import { ViewPublicationComponent } from 'src/app/main-components/view-publicati
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-
+import { NgImageSliderModule } from 'ng-image-slider';
+import { CarouselComponent } from 'src/app/secondary-components/carousel/carousel.component';
 
 @NgModule({
   declarations: [
-    ViewPublicationComponent
+    ViewPublicationComponent,
+    CarouselComponent
   ],
   imports: [
     CommonModule,
     PublicationRoutingModule,
-    HttpClientModule, 
     FormsModule,
-    RouterModule
+    HttpClientModule, 
+    RouterModule,
+    NgImageSliderModule
   ]
 })
 export class PublicationModule { }

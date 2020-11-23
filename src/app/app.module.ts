@@ -22,6 +22,7 @@ import { SearchComponent } from './secondary-components/search/search.component'
 import { HeaderComponent } from './secondary-components/header/header.component';
 import { PublicationsComponent } from './main-components/publications/publications.component';
 import { PublicationModule } from './modules/publication/publication.module';
+// import { NgImageSliderModule } from 'ng-image-slider';
 
 @NgModule({
   declarations: [
@@ -32,9 +33,7 @@ import { PublicationModule } from './modules/publication/publication.module';
     NotificationComponent,
     SearchComponent,
     HeaderComponent,
-    PublicationsComponent,
-    // ViewPublicationComponent,
-
+    PublicationsComponent
   ],
   imports: [
     BrowserModule,
@@ -43,10 +42,13 @@ import { PublicationModule } from './modules/publication/publication.module';
     RouterModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    // NgImageSliderModule,
 
+    // *** custom modules
     AdminPublicationModule,
     PublicationModule,
     
+    // *** firebase
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     AngularFireAuthModule, 

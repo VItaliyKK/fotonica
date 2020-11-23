@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { IPublication } from 'src/app/shared/interfaces/publication.interface';
@@ -7,7 +7,8 @@ import { PublicationService } from 'src/app/shared/services/publication.service'
 @Component({
   selector: 'app-view-publication',
   templateUrl: './view-publication.component.html',
-  styleUrls: ['./view-publication.component.scss']
+  styleUrls: ['./view-publication.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class ViewPublicationComponent implements OnInit {
   currentPublication:IPublication = {} as IPublication
@@ -15,7 +16,6 @@ export class ViewPublicationComponent implements OnInit {
   currentPublicationContent:string = ''
   publicationSubscriber: Subscription
   publicationContentSubscriber: Subscription
-  carouselIsExist:boolean = false
 
   constructor(private publicationService: PublicationService, private router: Router) { }
 
@@ -23,7 +23,6 @@ export class ViewPublicationComponent implements OnInit {
     this.publicationSubscriber = this.publicationService.getPublicationData.subscribe( publication => {
       this.currentPublication = publication
       this.currentPublicationDate = publication.date
-      this.carouselIsExist == publication.slidePhotos.length > 0
     })
     this.publicationContentSubscriber = this.publicationService.getPublicationContentData.subscribe( text => {
       this.currentPublicationContent = text

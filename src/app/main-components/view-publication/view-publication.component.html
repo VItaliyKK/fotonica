@@ -4,10 +4,10 @@
         <h1>{{currentPublication?.title}}</h1>
     </div>
     <div class="view_publication_content" [innerHTML]="currentPublicationContent"></div>
-    <div *ngIf="carouselIsExist" class="view_publication_carousel">
+    <div *ngIf="currentPublication?.tempPhotos" class="view_publication_carousel">
         <app-carousel [photosList]="currentPublication?.tempPhotos"></app-carousel>
     </div>
     <div class="view_publication_date">
-        <time>{{currentPublicationDate?.seconds * 1000 | date:'HH:mm, MMM d, y'}}</time>
+        <span>Дата публікації: <time>{{currentPublicationDate?.seconds * 1000 | date:'HH:mm, MMM d, y'}}</time></span>
     </div>
 </div>
