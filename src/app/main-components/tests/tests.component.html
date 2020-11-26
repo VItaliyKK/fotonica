@@ -1,0 +1,20 @@
+<div class="tests_wrapper">
+    <h2 class="tests_list_title">Список тестів:</h2>
+    <p *ngIf="tests.length == 0" class="tests_empty">Публікацій немає</p>
+    <div class="tests_list">
+        <div *ngFor="let test of tests" class="test_container">
+            <a [routerLink]="[ '/tests/', test.id ]" class="test">
+                <div class="test_header_left_block"></div>
+                <div class="test_date">
+                    <time>{{test.date.seconds * 1000 | date:'HH:mm, MMM d, y'}}</time>
+                </div>
+                <div class="test_content">
+                    <div>
+                        <h2>{{test.name}}</h2>
+                        <h3>Кількість питань: {{test.questions.length}}</h3>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>

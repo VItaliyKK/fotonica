@@ -11,7 +11,6 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AdminTestsComponent } from './admin-components/admin-tests/admin-tests.component';
 import { AdminLoginComponent } from './admin-components/admin-login/admin-login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NotificationComponent } from './secondary-components/notification/notification.component';
@@ -22,18 +21,22 @@ import { SearchComponent } from './secondary-components/search/search.component'
 import { HeaderComponent } from './secondary-components/header/header.component';
 import { PublicationsComponent } from './main-components/publications/publications.component';
 import { PublicationModule } from './modules/publication/publication.module';
-// import { NgImageSliderModule } from 'ng-image-slider';
+import { AdminTestModule } from './modules/admin-test/admin-test.module';
+import { TestsComponent } from './main-components/tests/tests.component';
+import { ViewTestComponent } from './main-components/view-test/view-test.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     AdminComponent,
-    AdminTestsComponent,
     AdminLoginComponent,
     NotificationComponent,
     SearchComponent,
     HeaderComponent,
-    PublicationsComponent
+    PublicationsComponent,
+    TestsComponent,
+    ViewTestComponent
   ],
   imports: [
     BrowserModule,
@@ -42,11 +45,11 @@ import { PublicationModule } from './modules/publication/publication.module';
     RouterModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    // NgImageSliderModule,
 
     // *** custom modules
     AdminPublicationModule,
     PublicationModule,
+    AdminTestModule,
     
     // *** firebase
     AngularFireModule.initializeApp(environment.firebaseConfig),

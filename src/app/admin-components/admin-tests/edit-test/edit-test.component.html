@@ -1,0 +1,59 @@
+<div>
+    <a [routerLink]="['/admin/tests']" class="edit_test_back">Повернутись до тестів</a>
+    <h2 class="edit_test_title">Редагування тесту</h2>
+
+    <div class="edit_test_set_title">
+        <label for="edit_test_set_title_input">Назва тесту:</label>
+        <input id="edit_test_set_title_input" [(ngModel)]="testName" name="testName" type="text" placeholder="Назва ...">
+    </div>
+
+    <ng-container *ngIf="!showEditQuestionSettings; then addQuestionButton; else editQuestionBlock" class="question_actions"></ng-container>
+    <ng-template #addQuestionButton>
+        <div class="add_edit_question_wrapper">
+            <button (click)="toggleQuestionBlock()" class="button">Додати питання</button>
+        </div>
+    </ng-template>
+    <ng-template #editQuestionBlock>
+        <div class="add_edit_question_wrapper">
+            <div class="add_edit_question">
+                <label for="editQuest">Нове питання:</label>
+                <input id="editQuest" [(ngModel)]="tempNameEditQuestion" name="tempNameEditQuestion" type="text" placeholder="Питання ...">
+            </div>
+            <div class="add_variant_answer_edit_question">
+                <label for="variantAnswerEditQuest">Варіант відповіді:</label>
+                <input id="variantAnswerEditQuest" [(ngModel)]="tempAnswerEditQuestion" name="tempAnswerEditQuestion" type="text" placeholder="Варіант відповіді ...">
+            </div>
+            <button (click)="addNewVariantAnswerQuestion()" class="button">Додати варіант відповіді</button>
+            <!-- варіанти відповідей -->
+            <div class="template_edit_question">
+                <h4>{{tempNameeditQuestion}}</h4>
+                <div *ngFor="let option of tempQuestion.options"> 
+                    <button (click)="setCorrectAnswer(option)" [ngClass]="{'correct': option == tempQuestion.answer}">{{option}}</button>
+                </div>
+            </div>
+        
+            <button (click)="addEditQuestion()" class="button">Додати в список</button>
+        </div>
+    </ng-template>
+
+    <div class="ready_template_questions_test_wrapper">
+        <h2>Попередній результат: </h2>
+        <div *ngFor="let question of test.questions; let i=index" class="ready_template_questions_test_element">
+            <h3>{{i+1 + '. ' + question.question}}</h3>
+            <div *ngFor="let option of question.options" class="ready_template_questions_box"> 
+                <button (click)="setVariantExistQuestion(question, option)" [ngClass]="{'correct': option == question.answer}" class="set">
+                    <span>{{option}}</span>
+                </button>
+                <button (click)="deleteVariantExistQuestion(question, option)" class="delete">Видалити</button>
+            </div>
+            <div class="add_variant_for_ready_template_question">
+                <button (click)="addVariantForExistQuestion(question, inputNewVariantExistQuestion.value)">Додати варіант +</button>
+                <input type="text" #inputNewVariantExistQuestion>
+            </div>
+        </div>
+    </div>
+    
+    <div class="update_test">
+        <button (click)="updateTest()">Оновити тест</button>
+    </div>
+</div>

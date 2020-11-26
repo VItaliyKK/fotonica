@@ -57,11 +57,6 @@ audio, canvas, video {
 [hidden] {
     display: none;
 }
-html {
-    font-size: 100%; /* 1 */
-    -webkit-text-size-adjust: 100%; /* 2 */
-    -ms-text-size-adjust: 100%; /* 2 */
-}
 a:active, a:hover {
     outline: 0;
 }
@@ -75,7 +70,6 @@ fieldset {
     padding: 0.35em 0.625em 0.75em;
 }
 button, input, select, textarea {
-    font-size: 100%; /* 1 */
     margin: 0; /* 2 */
     vertical-align: baseline; /* 3 */
     vertical-align: middle; /* 3 */

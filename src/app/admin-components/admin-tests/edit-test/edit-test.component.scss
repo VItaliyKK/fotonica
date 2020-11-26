@@ -1,0 +1,113 @@
+.edit_test_title{
+    text-align: center;
+    color: gray;
+    margin: 0;
+    padding: 10px;
+    border-bottom: 1px solid var(--border-color);
+}
+.edit_test_set_title{
+    border-bottom: 1px solid var(--border-color);
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 150px auto;
+    input{
+        padding: 5px;
+    }
+}
+.add_edit_question_wrapper{
+    box-shadow: 0px 0px 5px grey;
+    border-radius: 10px;
+    padding: 10px;
+    .button{
+        display: block;
+        margin: auto;
+        padding: 10px;
+        background-color: grey;
+        color: white;
+    }
+    .add_edit_question, .add_variant_answer_edit_question{
+        display: grid;
+        grid-template-columns: 150px auto;
+        margin-bottom: 10px;
+    }
+    .template_edit_question{
+        background-color: white;
+        padding: 10px;
+        margin: 10px;
+        h4{
+            margin: 0;
+        }
+        button{
+            width: 100%;
+            text-align: left;
+            padding: 5px;
+            padding-left: 10px;
+            border-radius: 10px;
+            margin-top: 5px;
+            &.correct{
+                background-color: #7fe049;
+            }
+        }
+    }
+}
+.ready_template_questions_test_wrapper{
+    h2{
+        text-align: center;
+        color: gray;
+    }
+    .ready_template_questions_test_element{
+        background-color: white;
+        border-radius: var(--border-radius);
+        padding: 10px;
+        margin-bottom: 10px;
+        .ready_template_questions_box{
+            display: grid;
+            grid-template-columns: auto 100px;
+            grid-gap: 10px;
+            button{
+                border-radius: 10px;
+                margin-top: 5px;
+                padding: 5px;
+                &.set{
+                    padding-left: 15px;
+                    text-align: left;
+                }
+                &.set.correct{
+                    background-color: #8BC34A;
+                }
+                &.delete{
+                    background-color: #F44336;
+                }
+            }
+        }
+        .add_variant_for_ready_template_question{
+            display: grid;
+            grid-template-columns: 150px auto;
+            grid-gap: 10px;
+            margin-top: 5px;
+            button{
+                display: block;
+                border-radius: 10px;
+                background-color: darkgrey;
+                padding: 5px;
+            }
+            input{
+                width: auto;
+                border-radius: 10px;
+                padding: 5px;
+                border-width: 1px;
+            }
+        }
+    }
+}
+.update_test{
+    border-top: 1px solid var(--border-color);
+    button{
+        display: block;
+        margin: auto;
+        padding: 10px;
+        background-color: var(--admin-btn-col);
+        color: white;
+        margin-top: 10px;
+    }
+}
