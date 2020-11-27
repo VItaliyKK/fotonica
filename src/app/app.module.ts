@@ -24,6 +24,8 @@ import { PublicationModule } from './modules/publication/publication.module';
 import { AdminTestModule } from './modules/admin-test/admin-test.module';
 import { TestsComponent } from './main-components/tests/tests.component';
 import { ViewTestComponent } from './main-components/view-test/view-test.component';
+import { AboutUsModule } from './modules/about-us/about-us.module';
+import { AdminAboutUsModule } from './modules/admin-about-us/admin-about-us.module';
 
 
 @NgModule({
@@ -35,8 +37,9 @@ import { ViewTestComponent } from './main-components/view-test/view-test.compone
     SearchComponent,
     HeaderComponent,
     PublicationsComponent,
+    // tests -> create module
     TestsComponent,
-    ViewTestComponent
+    ViewTestComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,6 +53,8 @@ import { ViewTestComponent } from './main-components/view-test/view-test.compone
     AdminPublicationModule,
     PublicationModule,
     AdminTestModule,
+    AboutUsModule,
+    AdminAboutUsModule,
     
     // *** firebase
     AngularFireModule.initializeApp(environment.firebaseConfig),

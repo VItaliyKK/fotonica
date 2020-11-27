@@ -1,0 +1,9 @@
+<a [routerLink]="[ '/admin']" class="back_link">Повернутись до головної сторінки</a>
+
+<div class="about_us_wrapper">
+    <p>Про нас:</p>
+    
+    <ckeditor [(ngModel)]="htmlContent"></ckeditor>
+
+    <button (click)="updateAboutUs()" class="about_us_update">Оновити</button>
+</div>

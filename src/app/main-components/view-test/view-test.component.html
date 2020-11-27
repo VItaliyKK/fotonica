@@ -1,1 +1,43 @@
-<p>view-test works!</p>
+<a [routerLink]="[ '/tests']" class="back_link">Повернутись до списку тестів</a>
+<div class="start_test_name">
+    <span>Тест:</span>
+    <p>{{test.name}}</p>
+</div>
+
+<ng-container [ngSwitch]="showContent">
+    <ng-container *ngSwitchCase="'passing-test'">
+        <div class="passing_test_wrapper test_content_wrapper">
+            <div *ngFor="let question of test.questions; let i=index" class="passing_test_question_box">
+                <h3>{{i+1 + '. ' + question.question}}</h3>
+                <div *ngFor="let variant of question.options; let i=index" class="passing_test_question_variant">
+                    <button (click)="selectVariant(question, variant)"
+                            [ngClass]="{'select': question.selected == variant}">{{variant}}</button>
+                </div>
+            </div>
+            <button (click)="getResultTest()" class="finish_test">Завершити тест</button>
+        </div>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="'result-test'">
+        <div class="result_test_wrapper test_content_wrapper">
+            <div class="result_test_details">
+                <p>Ваш результат: <span>{{test?.resultAmount + '/' + test.questions.length}}</span></p>
+                <progress [max]="test.questions.length" [value]="test?.resultAmount"></progress>
+            </div>
+            <div *ngFor="let question of test.questions; let i=index" class="result_test_question_box">
+                <h3>{{i+1 + '. ' + question.question}}</h3>
+                <div *ngFor="let variant of question.options; let i=index" class="result_test_question_variant">
+                    <span [ngClass]="{'selected': question.selected == variant, 'correct': variant == question.answer}">{{variant}}</span>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+
+    <ng-container *ngSwitchDefault>
+        <div class="start_test_wrapper">
+            <p class="start_test_question_amount">Кількість питань: <span>{{test.questions ? test.questions.length : '0'}}</span></p>
+            <button (click)="startPassingTest()" class="start_test">Пройти тест</button>
+            <p class="start_test_time">Час проходження тесту: <span>Необмежений</span></p>
+        </div>
+    </ng-container>
+</ng-container>

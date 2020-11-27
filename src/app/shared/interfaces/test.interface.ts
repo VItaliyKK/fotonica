@@ -6,4 +6,5 @@ export interface ITest{
     date: Data;
     name: string;
     questions: IQuestionTest[];
+    resultAmount?: number;
 }

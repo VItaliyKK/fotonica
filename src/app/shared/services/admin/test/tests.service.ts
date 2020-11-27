@@ -9,6 +9,7 @@ import { MainService } from '../../main.service';
 })
 export class TestsService {
   getTestsList: Subject<ITest[]> = new Subject<ITest[]>()
+  getOnceTest: Subject<ITest> = new Subject<ITest>()
 
   constructor(private firestore: AngularFirestore, private mainService: MainService) { }
 
@@ -35,4 +36,14 @@ export class TestsService {
         this.mainService.notifyEvent(err.message)
       })
   };
+
+  getTestsByID(iD:string){
+    this.firestore.collection('tests').doc(iD).snapshotChanges().subscribe( docData => {
+      this.getOnceTest.next(docData.payload.data() as ITest)
+    })
+  };
+
+  getUrlId():string{
+    return this.mainService.getIdViaUrl()
+  }
 }

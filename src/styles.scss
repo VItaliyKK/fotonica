@@ -20,3 +20,9 @@ body{
 ::-webkit-scrollbar-thumb {
     background-color: whitesmoke;
 }
+.back_link{
+    color: var(--main-text-color);
+    font-family: revert;
+    margin-bottom: 10px;
+    display: inline-block;
+}
