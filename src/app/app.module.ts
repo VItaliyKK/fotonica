@@ -9,41 +9,64 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
-import { CKEditorModule } from 'ckeditor4-angular';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AdminComponent } from './admin-components/admin/admin.component';
-import { AdminPublicationsComponent } from './admin-components/admin-publications/admin-publications.component';
-import { AdminTestsComponent } from './admin-components/admin-tests/admin-tests.component';
 import { AdminLoginComponent } from './admin-components/admin-login/admin-login.component';
-import { EditPublicationComponent } from './admin-components/admin-publications/edit-publication/edit-publication.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NewPublicationComponent } from './admin-components/admin-publications/new-publication/new-publication.component';
 import { NotificationComponent } from './secondary-components/notification/notification.component';
+import { AdminPublicationModule } from './modules/admin-publication/admin-publication.module';
+import { RouterModule } from '@angular/router';
+import { AdminComponent } from './admin-components/admin/admin.component';
+import { SearchComponent } from './secondary-components/search/search.component';
+import { HeaderComponent } from './secondary-components/header/header.component';
+import { PublicationsComponent } from './main-components/publications/publications.component';
+import { PublicationModule } from './modules/publication/publication.module';
+import { AdminTestModule } from './modules/admin-test/admin-test.module';
+import { TestsComponent } from './main-components/tests/tests.component';
+import { ViewTestComponent } from './main-components/view-test/view-test.component';
+import { AboutUsModule } from './modules/about-us/about-us.module';
+import { AdminAboutUsModule } from './modules/admin-about-us/admin-about-us.module';
+import { FooterComponent } from './secondary-components/footer/footer.component';
+import { MethodModule } from './modules/method/method.module';
+import { MainComponent } from './main-components/main/main.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AdminComponent,
-    AdminPublicationsComponent,
-    AdminTestsComponent,
     AdminLoginComponent,
-    EditPublicationComponent,
-    NewPublicationComponent,
-    NotificationComponent
+    NotificationComponent,
+    SearchComponent,
+    HeaderComponent,
+    PublicationsComponent,
+    // tests -> create module
+    TestsComponent,
+    ViewTestComponent,
+    FooterComponent,
+    MainComponent,
+    
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule, 
-    FormsModule,
     HttpClientModule,
-    CKEditorModule,
+    FormsModule,
+    RouterModule,
+    AppRoutingModule,
     BrowserAnimationsModule,
+
+    // *** custom modules
+    AdminPublicationModule,
+    PublicationModule,
+    AdminTestModule,
+    AboutUsModule,
+    AdminAboutUsModule,
+    MethodModule,
+    
+    // *** firebase
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     AngularFireAuthModule, 
-    AngularFireStorageModule 
+    AngularFireStorageModule
   ],
   providers: [],
   bootstrap: [AppComponent]

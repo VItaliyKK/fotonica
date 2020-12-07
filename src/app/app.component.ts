@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'fotonica';
+
+  consoleLog(c){
+    console.log(c)
+  }
 }

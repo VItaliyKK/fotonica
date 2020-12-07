@@ -1,0 +1,113 @@
+.start_test_name{
+    text-align: center;
+    color: grey;
+    margin: 0;
+    box-shadow: 0px 5px 5px #80808073;
+    margin-top: 5px;
+    display: grid;
+    grid-template-columns: 70px auto;
+    grid-template-rows: 70px;
+    span{
+        background-color: var(--main-color);
+        color: white;
+        line-height: 70px;
+    }
+    p{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        font-size: 20px;
+        color: white;
+        background-color: var(--secondary-col);
+    }
+}
+.start_test_wrapper{
+    .start_test_question_amount, .start_test_time{
+        text-align: center;
+        margin: 10px;
+        color: grey;
+        span{
+            color: var(--main-text-color);
+        }
+    }
+    .start_test{
+        display: block;
+        margin: auto;
+        padding: 10px 40px;
+        background-color: var(--secondary-col);
+        color: white;
+        font-size: 20px;
+        transition: background-color 0.4s linear;
+        background-color: var(--main-color);
+        &:hover{
+            background-color: var(--secondary-col);
+        }
+    }
+}
+
+.test_content_wrapper{
+    .passing_test_question_box, 
+    .result_test_question_box{
+        margin-top: 20px;
+        padding: 20px;
+        background-color: white;
+        box-shadow: 0px 5px 5px #80808073;
+        h3{
+            margin: 0;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .result_test_question_variant span{
+            display: block;
+        }
+        .passing_test_question_variant button{
+            width: 100%;
+        }
+        .passing_test_question_variant button, 
+        .result_test_question_variant span{
+            padding: 10px 40px;
+            margin-top: 15px;
+            text-align: left;
+            border-radius: 15px;
+            background-color: #efefef;
+            &.select{
+                background-color: darkgrey;
+            }
+            &.selected{
+                background-color: salmon;
+            }
+            &.correct{
+                background-color: #CDDC39;
+            }
+        }
+    }
+    .finish_test{
+        display: block;
+        margin: 15px auto;
+        color: white;
+        padding: 10px 40px;
+        background-color: var(--main-color);
+        transition: background-color 0.4s linear;
+        &:hover{
+            background-color: var(--secondary-col);
+        }
+    }
+}
+.result_test_details{
+    background-color: white;
+    padding: 20px;
+    margin: 20px auto;
+    box-shadow: 0px 5px 5px #80808073;
+    p{
+        text-align: center;
+        color: grey;
+        font-weight: 400;
+        font-size: 24px;
+        padding: 10px;
+    }
+    progress{
+        height: 40px;
+        width: 100%;
+    }
+}

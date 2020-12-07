@@ -1,0 +1,20 @@
+<div class="publications_wrapper">
+    <h2 class="publications_list_title">Список публікацій:</h2>
+    <p *ngIf="publications.length == 0" class="publications_empty">Публікацій немає</p>
+    <div class="publications_list">
+        <div *ngFor="let publication of publications" class="publication_container">
+            <a [routerLink]="[ '/publications/', publication.id ]" class="publication">
+                <div class="publication_header_left_block"></div>
+                <div class="publication_date">
+                    <time>{{publication.date.seconds * 1000 | date:'HH:mm, MMM d, y'}}</time>
+                </div>
+                <div class="publication_content">
+                    <h2>{{publication.title}}</h2>
+                    <div class="publication_logo" [ngStyle]="{'background-image': publication?.tempLogo ? 'url('+publication?.tempLogo+')' : 'url(../../../assets/imgs/publication-default-photo.jpg)'}"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- <ng-image-slider [images]="imageObject" #nav></ng-image-slider> -->

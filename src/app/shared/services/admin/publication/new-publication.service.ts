@@ -11,7 +11,6 @@ import { MainService } from '../../main.service';
 export class NewPublicationService {
   getPublicationData: Subject<IPublication> = new Subject<IPublication>()
   getPublicationContentData: Subject<string> = new Subject<string>() 
-  // getPublicationPhotosData: Subject<Array<string>> = new Subject<Array<string>>()
   currentPublication:IPublication
   currentPublicationContent:string
 
@@ -20,34 +19,6 @@ export class NewPublicationService {
   getDownloadUrlPhoto(filePath: string): Promise<any> {
     return this.storage.ref(filePath).getDownloadURL().toPromise()
   };
-
-  // getPublication(id:string): void{
-  //   this.firestore.collection('publications').doc(id).get().toPromise().then( publication => {
-  //     this.currentPublication = publication.data() as IPublication
-  //     if (this.currentPublication.titlePhoto) {
-  //       this.storage.ref(`publications/logo/${this.currentPublication.titlePhoto}`).getDownloadURL().toPromise().then( url => {
-  //         this.currentPublication.titlePhoto = url
-  //         this.getPublicationData.next(this.currentPublication)
-  //       })
-  //     }
-  //     if (this.currentPublication.slidePhotos.length > 0) {
-  //       let photosUrlPromises = this.currentPublication.slidePhotos.map( photo => {
-  //         return this.storage.ref(`publications/photos/${photo}`).getDownloadURL().toPromise()
-  //       })
-  //       Promise.all(photosUrlPromises).then( promises => {
-  //         this.currentPublication.tempPhotos = []
-  //         promises.forEach( photoUrl => {
-  //           this.currentPublication.tempPhotos.push(photoUrl)
-  //         })
-  //         this.getPublicationData.next(this.currentPublication)
-  //       })
-  //     }
-  //   })
-  //   this.firestore.collection('publications-content').doc(id).get().toPromise().then( content => {
-  //     this.getPublicationContentData.next(content.data().content)
-  //     this.currentPublicationContent = content.data().content
-  //   })
-  // }
 
   private uploadPublicationPhotos(publicationPhotos: File[]) {
     let filesPromises = publicationPhotos.map(file => {

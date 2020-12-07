@@ -1,0 +1,103 @@
+.new_test_title{
+    text-align: center;
+    color: grey;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: var(--main-padding);
+}
+.new_test_set_title{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: var(--main-padding);
+    label{
+        flex-basis: 150px;
+    }
+    input{
+        width: calc(100% - 150px);
+        padding: 5px;
+        font-size: 16px;
+    }
+}
+.add_new_question_wrapper{
+    border-bottom: 1px solid var(--border-color);
+    padding: var(--main-padding) 0;
+    .button{
+        display: block;
+        margin: auto;
+        padding: 10px;
+        background-color: grey;
+        color: white;
+    }
+}
+.add_new_question_wrapper{
+    box-shadow: 0px 0px 5px grey;
+    padding: 15px;
+    border-radius: var(--border-radius);
+    .add_new_question, .add_variant_answer_new_question{
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        label{
+            flex-basis: 150px;
+        }
+        input{
+            width: calc(100% - 150px);
+            padding: 5px;
+            font-size: 16px;
+        }
+    }
+    .add_variant_answer_new_question{
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .template_new_question{
+        background-color: white;
+        padding: 10px;
+        margin: 10px 0;
+        h4{
+            margin: 0;
+        }
+        button{
+            width: 100%;
+            text-align: left;
+            padding: 5px 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            &.correct{
+                background-color: #a2d224;
+            }
+        }
+    }
+}
+.ready_template_questions_test_wrapper{
+    h2{
+        text-align: center;
+        color: grey;
+    }
+    .ready_template_questions_test_element{
+        border-bottom: 1px solid var(--border-color);
+        margin-top: 10px;
+        padding-bottom: 20px;
+        button{
+            width: 100%;
+            text-align: left;
+            padding: 5px 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            &.correct{
+                background-color: #a2d224;
+            }
+        }
+    }
+} 
+.publish_new_test{
+    border-top: 1px solid var(--border-color);
+    button{
+        display: block;
+        margin: 10px auto;
+        padding: 10px;
+        background-color: var(--admin-btn-col);
+        color: white;
+    }
+}

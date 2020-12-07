@@ -1,0 +1,16 @@
+.about_us_wrapper p{
+    padding: 20px;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+    color: grey;
+}
+.about_us_update{
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: var(--admin-btn-col);
+    color: white;
+    font-size: 16px;
+}

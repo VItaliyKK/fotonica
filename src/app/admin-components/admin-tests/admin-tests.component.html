@@ -1,1 +1,21 @@
-<p>admin-tests works!</p>
+<section class="admin_tests_wrapper">
+    <div class="admin_test_block">
+        <a [routerLink]="['/admin']" class="admin_list_item">Повернутись до головної сторінки</a>
+    </div>
+    <div class="admin_test_block">
+        <a [routerLink]="['/admin/tests/new']" class="new_test" type="button">Створити тести</a>
+    </div>
+    <div class="all_tests">
+        <p class="all_tests_title">Тести:</p>
+        <p *ngIf="tests.length == 0" class="all_tests_title">Немає тестів</p>
+        <div *ngFor="let test of tests;" class="test">
+            <a [routerLink]="['/tests/', test.id]" class="test_title">{{test.name}}</a>
+            <div class="test_actions">
+                <a [routerLink]="['/admin/tests/edit/', test.id]" class="test_edit" title="Редагувати" type="button">
+                    <img src="../../../assets/imgs/edit.png" alt="">
+                </a>
+                <button (click)="deletetest(test.id)" class="test_delete" title="Видалити" type="button"></button>
+            </div>
+        </div> 
+    </div> 
+</section> 

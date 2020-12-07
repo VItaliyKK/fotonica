@@ -8,7 +8,7 @@ import { MainService } from '../../main.service';
 @Injectable({
   providedIn: 'root'
 })
-export class PublicationService {
+export class PublicationsService {
   publicationsList: IPublication[] = []
   getPublicationsList: Subject<IPublication[]> = new Subject<IPublication[]>()
 

@@ -1,0 +1,15 @@
+<!-- <ngb-carousel>
+  <ng-template ngbSlide *ngFor="let photo of photosList">
+    <div class="picsum-img-wrapper">
+      <img [src]="photo" alt="">
+    </div>
+    <div class="carousel-caption">
+      <h3>First slide label</h3>
+      <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+    </div>
+  </ng-template>
+</ngb-carousel> -->
+
+<div *ngIf="imageObject.length > 0">
+  <ng-image-slider [images]="imageObject" [imageSize]="{width: 300, height: 300, space: 4}"></ng-image-slider> 
+</div>

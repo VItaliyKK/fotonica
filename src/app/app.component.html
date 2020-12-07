@@ -1,16 +1,9 @@
-<header class="header_wrapper">
-    <div class="header_logo_wrapper">
-      <h1>WebsiteName</h1>
-    </div>
-    <nav class="header_navigation">
-      <a [routerLink]="['/']" class="admin_list_item">Page 1</a>
-      <a [routerLink]="['/']" class="admin_list_item">Page 2</a>
-      <a [routerLink]="['/']" class="admin_list_item">Page 3</a>
-      <a [routerLink]="['/']" class="admin_list_item">Page 4</a>
-      <a [routerLink]="['/']" class="admin_list_item">Page 5</a>
-    </nav>
-</header>
+<app-header></app-header>
+
 <main class="main_wrapper">
   <router-outlet></router-outlet>
 </main>
+
+<app-footer></app-footer>
+
 <app-notification></app-notification>

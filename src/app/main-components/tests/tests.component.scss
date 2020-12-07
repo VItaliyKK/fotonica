@@ -1,0 +1,77 @@
+.tests_list_title{
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: var(--main-padding);
+    color: var(--main-text-color);
+    margin: 0;
+}
+.tests_empty{
+    text-align: center;
+    margin-top: 20px;
+    color: var(--main-text-color);
+}
+.tests_list{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    .test_container{
+        padding: 20px;
+        &:nth-child(odd){
+            padding-left: 0;
+        }
+        &:nth-child(even){
+            padding-right: 0;
+        }
+        .test{
+            display: grid;
+            grid-template-columns: 40px 1fr;
+            grid-template-rows: 40px 160px;
+            grid-template-areas:
+                        "test_header_left_box test_date"
+                        "test_content test_content";
+            padding: 0;
+            background-color: white;
+            height: 200px;
+            width: 100%;
+            box-shadow: 0px 5px 10px 0px #00000026;
+            .test_header_left_block{
+                grid-area: test_header_left_box;
+                background-color: var(--main-color);
+                height: 100%;
+            }
+            .test_date{
+                grid-area: test_date;
+                background-color: var(--secondary-col);
+                padding-left: var(--main-padding);
+                time{
+                    color: white;
+                    line-height: 40px;
+                }
+            }
+            .test_content{
+                grid-area: test_content;
+                padding: 15px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.3s;
+                h2{
+                    text-align: center;
+                    color: var(--main-text-color);
+                    font-size: 20px;
+                }
+                h3{
+                    margin: 0;
+                    color: grey;
+                    font-size: 16px;
+                    text-align: center;
+                    border-top: 1px solid var(--border-color);  
+                }
+            }
+            &:hover{
+                & .test_content{
+                    background-color: ghostwhite;
+                }
+            }
+        }
+    }
+}
