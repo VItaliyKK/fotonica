@@ -12,6 +12,14 @@
     .about_us_header_center_block{
         grid-area: head_center;
         background-color: var(--secondary-col);
+        span{
+            display: block;
+            line-height: 100px;
+            padding-left: 20px;
+            width: 100%;
+            color: white;
+            font-size: 22px;
+        }
     }
     .about_us_description{
         grid-area: description;

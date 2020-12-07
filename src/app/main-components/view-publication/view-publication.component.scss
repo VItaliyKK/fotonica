@@ -27,6 +27,10 @@
     }
     .view_publication_content{
         grid-area: view_publc_content;
+        img{
+            max-width: 450px;
+            max-height: 450px;
+        }
     }
     .view_publication_carousel{
         grid-area: view_publc_carousel;

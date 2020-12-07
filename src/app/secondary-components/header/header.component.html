@@ -1,13 +1,13 @@
 <header class="header_wrapper">
     <div class="header_logo_wrapper">
       <h1>Цифрова голографія</h1>
+      <button *ngIf="isAdmin" (click)="logOut()" class="log_out_admin">Вийти з ADMIN</button>
     </div>
     <nav class="header_navigation">
       <div class="header_navigation_width">
         <div class="header_navigation_list">
           <a [routerLink]="['/publications']" routerLinkActive="active" class="admin_list_item">Публікації</a>
-          <a [routerLink]="['/admin']" routerLinkActive="active" class="admin_list_item">Page 2</a>
-          <a [routerLink]="['/admin']" routerLinkActive="active" class="admin_list_item">Page 3</a>
+          <a [routerLink]="['/method']" routerLinkActive="active" class="admin_list_item">Методи</a>
           <a [routerLink]="['/tests']" routerLinkActive="active" class="admin_list_item">Тести</a>
           <a [routerLink]="['/about-us']" routerLinkActive="active" class="admin_list_item">Про нас</a>
         </div>

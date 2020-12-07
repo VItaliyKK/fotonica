@@ -9,6 +9,7 @@
 /node_modules
 
 # Firebase
+.firebase
 .firebaserc
 firebase.json
 firestore.indexes.json
@@ -49,3 +50,6 @@ testem.log
 Thumbs.db
 
 debug.log
+
+
+/*/environment.prod.ts

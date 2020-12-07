@@ -26,7 +26,9 @@ import { TestsComponent } from './main-components/tests/tests.component';
 import { ViewTestComponent } from './main-components/view-test/view-test.component';
 import { AboutUsModule } from './modules/about-us/about-us.module';
 import { AdminAboutUsModule } from './modules/admin-about-us/admin-about-us.module';
-
+import { FooterComponent } from './secondary-components/footer/footer.component';
+import { MethodModule } from './modules/method/method.module';
+import { MainComponent } from './main-components/main/main.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,9 @@ import { AdminAboutUsModule } from './modules/admin-about-us/admin-about-us.modu
     // tests -> create module
     TestsComponent,
     ViewTestComponent,
+    FooterComponent,
+    MainComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -55,6 +60,7 @@ import { AdminAboutUsModule } from './modules/admin-about-us/admin-about-us.modu
     AdminTestModule,
     AboutUsModule,
     AdminAboutUsModule,
+    MethodModule,
     
     // *** firebase
     AngularFireModule.initializeApp(environment.firebaseConfig),
